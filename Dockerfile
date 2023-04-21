@@ -7,7 +7,6 @@ ENV RECENV $RECENV
 # Se instala app
 ADD main /
 ADD .env /
-COPY Resources/ /Resources
 
 # Se copia certificado de maquina host
 #COPY ca-certificates.crt /etc/ssl/certs/
