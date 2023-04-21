@@ -17,7 +17,7 @@ func DBConnection() {
 	var user = os.Getenv("USER")
 	var password = os.Getenv("PASS")
 	var dbname = os.Getenv("DBNAME")
-	var port = os.Getenv("PORT")
+	var port = os.Getenv("DBPORT")
 	var DSN = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", host, user, password, dbname, port)
 
 	DB, error = gorm.Open(postgres.Open(DSN), &gorm.Config{})

@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -49,6 +50,6 @@ func main() {
 	s.Handle("/recipes", security.ValidateJWT(routes.CreateRecipeHandler)).Methods("POST")
 	s.Handle("/recipes/{id}", security.ValidateJWT(routes.DeleteRecipeHandler)).Methods("DELETE")
 
-	log.Println("Conexión en puerto 6069")
-	http.ListenAndServe(":6069", r)
+	log.Println("Conexión en puerto" + os.Getenv("PORT"))
+	http.ListenAndServe("0.0.0.0"+os.Getenv("PORT"), r)
 }
