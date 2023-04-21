@@ -1,18 +1,7 @@
-FROM scratch
-
-# Se setea variable de entorno
-ARG RECENV=P
-ENV RECENV $RECENV
-
-# Se instala app
-ADD main /
-ADD .env /
-
-# Se copia certificado de maquina host
-#COPY ca-certificates.crt /etc/ssl/certs/
-
-# Se habilita puerto
+FROM golang:latest
+WORKDIR /app
+COPY . /app
+RUN go mod download
+RUN go build -o main .
 EXPOSE 4000
-
-# Se ejecuta solo cuando se corre "docker run"
-ENTRYPOINT ["/main"]
+CMD ["./main"]
