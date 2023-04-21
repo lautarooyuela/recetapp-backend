@@ -49,6 +49,6 @@ func main() {
 	s.Handle("/recipes", security.ValidateJWT(routes.CreateRecipeHandler)).Methods("POST")
 	s.Handle("/recipes/{id}", security.ValidateJWT(routes.DeleteRecipeHandler)).Methods("DELETE")
 
-	log.Println("Conexión en puerto 4000")
-	http.ListenAndServe(":4000", r)
+	log.Println("Conexión en puerto 6069")
+	http.ListenAndServe(":6069", r)
 }
