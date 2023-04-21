@@ -28,9 +28,10 @@ func main() {
 	r := mux.NewRouter()
 
 	// Index route
-	r.HandleFunc("/", routes.HomeHandler)
 
 	s := r.PathPrefix("/api").Subrouter()
+
+	s.HandleFunc("/healthy", routes.Healthy).Methods("GET")
 
 	s.HandleFunc("/login/{token}", routes.Login).Methods("GET")
 	s.HandleFunc("/register", routes.Register).Methods("POST")
